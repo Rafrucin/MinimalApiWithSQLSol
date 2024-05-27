@@ -8,7 +8,8 @@ namespace MinimalApiWithSQL.Contexts
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
-
+        //In PM manager -> Add-Migration PeopleTable
+        //In PM manager -> Update-Database
         public DbSet<Person> People { get; set; }
     }
 }

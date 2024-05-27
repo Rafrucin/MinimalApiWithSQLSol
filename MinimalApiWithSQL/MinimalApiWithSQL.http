@@ -3,4 +3,9 @@
 GET {{MinimalApiWithSQL_HostAddress}}/weatherforecast/
 Accept: application/json
 
-###
+### Person - Create
+
+POST{{MinimalApiWithSQL_HostAddress}}/people/
+Contnet-Type: A
+
+

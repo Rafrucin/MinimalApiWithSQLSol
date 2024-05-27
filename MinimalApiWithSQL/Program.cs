@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MinimalApiWithSQL.Contexts;
+using MinimalApiWithSQL.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,19 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapPost("/people", async (Person person, ApplicationDbContext context) =>
+{
+    context.Add(person);
+    await context.SaveChangesAsync();
+    return TypedResults.Ok();
+});
+
+app.MapGet("/people", async (ApplicationDbContext context) =>
+{
+    var all = await context.People.ToListAsync();
+    return TypedResults.Ok(all);
+});
 
 app.Run();
 
